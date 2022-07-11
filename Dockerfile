@@ -8,7 +8,6 @@ COPY --chown=default . .
 
 RUN ls -lA && npm ci && npm run build
 
-COPY --chown=default licenses licenses
 COPY --chown=default public public
 
 ENV HOST=0.0.0.0 PORT=3001
