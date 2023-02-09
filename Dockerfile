@@ -1,14 +1,14 @@
-FROM registry.access.redhat.com/ubi8/nodejs-16:1-42
+FROM registry.access.redhat.com/ubi8/nodejs-16-minimal:1
 
-USER default
+USER 1001
 
 WORKDIR /opt/app-root/src
 
-COPY --chown=default . .
+COPY --chown=1001:1001 . .
 
 RUN ls -lA && npm ci && npm run build
 
-COPY --chown=default public public
+COPY --chown=1001:1001 public public
 
 ENV HOST=0.0.0.0 PORT=3001
 
